@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">LikesTag</string>
+    <string name="next">Next</string>
+    <string name="save">Save</string>
+    <string name="times">X %1$s</string>
+    <string name="shop_title">Store</string>
+    <string name="num_one">$ 1.99</string>
+    <string name="num_two">$ 3.99</string>
+    <string name="num_three">$ 5.99</string>
+</resources>

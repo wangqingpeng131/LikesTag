@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFFFF"
+    android:orientation="vertical"
+    tools:context="insta.get.likes.instagram.followers.ui.MainActivity">
+
+    <include
+        android:id="@+id/main_title_bar"
+        layout="@layout/main_bar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#FFF4F4F4"
+        app:layout_constraintBottom_toTopOf="@id/main_radio_group" />
+
+    <FrameLayout
+        android:id="@+id/main_fl"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <RadioGroup
+        android:id="@+id/main_radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <RadioButton
+            android:id="@+id/main_home"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:drawableTop="@drawable/home_ic"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp" />
+
+        <RadioButton
+            android:id="@+id/main_search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/search_ic"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp" />
+
+        <RadioButton
+            android:id="@+id/main_edit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/edit_ic"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp" />
+
+        <RadioButton
+            android:id="@+id/main_favorite"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/favorite_ic"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp" />
+    </RadioGroup>
+</LinearLayout>

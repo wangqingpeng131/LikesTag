@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/shop_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/store_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/store_coin_bg_ic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/coins_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="24dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/coin"
+        app:layout_constraintStart_toStartOf="@id/store_bg"
+        app:layout_constraintTop_toTopOf="@id/store_bg" />
+
+    <TextView
+        android:id="@+id/shop_coin_num"
+        android:layout_width="60dp"
+        android:layout_height="24dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="9dp"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/coins_iv"
+        app:layout_constraintStart_toEndOf="@id/coins_iv"
+        app:layout_constraintTop_toTopOf="@id/coins_iv"
+        tools:text="X 1000" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/buy_coin_ic"
+        android:layout_marginEnd="13dp"
+        app:layout_constraintBottom_toBottomOf="@id/coins_iv"
+        app:layout_constraintEnd_toStartOf="@id/shop_gold_num"
+        app:layout_constraintTop_toTopOf="@id/coins_iv" />
+
+    <TextView
+        android:id="@+id/shop_gold_num"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="38dp"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/coins_iv"
+        app:layout_constraintEnd_toEndOf="@id/store_bg"
+        app:layout_constraintTop_toTopOf="@id/coins_iv"
+        tools:text="$2.99" />
+</androidx.constraintlayout.widget.ConstraintLayout>
