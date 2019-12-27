@@ -52,26 +52,26 @@ class Util {
     companion object {
         const val GOLD = "gold"
         const val COIN = "coin"
-        const val MINI = "get.followers.instagram.hashtags.likes.person"
-        const val LARGE = "get.followers.instagram.hashtags.likes.partner"
-        const val SUPER = "get.followers.instagram.hashtags.likes.group"
-        const val HAPPY = "get.followers.instagram.hashtags.likes.happy"
-        const val STACK = "get.followers.instagram.hashtags.likes.stack"
-        const val STANDARD = "get.followers.instagram.hashtags.likes.standard"
-        const val TEAM = "get.followers.instagram.hashtags.likes.team"
-        const val POND = "get.followers.instagram.hashtags.likes.pond"
-        const val IAP = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAq2wlVxqZFz/GIz3I7Dg+mGTTg0G72hlaNzEuSG9pGDB9uVwXsZ4Ajr3hsZkXWOabUCi9v80/XfJzVfZCZWNeQRPP9nsDjibFrUKNHdLuSYrTWeKo+CTSk0G2QDbiSUQ03Lx0pXduRqrC7haE4u3r3mYEQ4ya1Dj0NaL9P1V2cNofTiKRZLpr+bh9N1AwvCMELLDw6L3HjgsIrwqFo5ulMQIjJD7HEWtVvuM8VfBHJpaPSebUdq36NIaIQiJr/EsHkZBbd7ZGtaAdoneX6uOllX9NtNpmdhIFe3JuSeg3YQIiPBTppWA2OuGZpS0gMKb5+OivSxx6tNZTE6BZGG9hLwIDAQAB"
-        const val NUM_ONE = 200
-        const val NUM_TWO = 500
-        const val NUM_THREE = 1000
-        const val NUM_HAPPY = 2000
-        const val NUM_STACK = 3000
-        const val NUM_STANDARD = 4500
-        const val NUM_TEAM = 6500
-        const val NUM_POND = 8500
+        const val MINI = "insta.get.likes.instagram.followers.newhello"
+        const val LARGE = "insta.get.likes.instagram.followers.newsmall"
+        const val SUPER = "insta.get.likes.instagram.followers.newnormal"
+        const val HAPPY = "insta.get.likes.instagram.followers.newstandard"
+        const val STACK = "insta.get.likes.instagram.followers.newspecial"
+        const val STANDARD = "insta.get.likes.instagram.followers.newlimited"
+        const val TEAM = "insta.get.likes.instagram.followers.newextra"
+        const val POND = "insta.get.likes.instagram.followers.newsuper"
+        const val IAP = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArFlG1YXnjUPM9A02y8ScrauCQj8vihiq5s1V+8FT13KYHzkMXToB6ThuRvL4CRbLhq41fv+KJGjWxWhqkGc0C7dYGBveoKqopWSQiENl1+svyiWO1qIRdEeuPTWgut/Yu/cwWJPhxFQPidtuCTkwHQIVphPY0hX2OR6rcy6ZSQ+pDnTaMHN4WMKZR6nOm/co/wlSfw3Y/CCt/1PAE5YMDF9hUMD7wGOzKkxWzi/qIOkQMatS1CQaeHiJfCi0cgSPlG3JtAHIe41qxQsj7CqWq8NlXvR/I+XC3ADkIvrOaUuEl2L8KLE1TWLbAyA92bAbgL5wAg9NnmUgCCaaHFMFdwIDAQAB"
+        const val NUM_ONE = 400
+        const val NUM_TWO = 800
+        const val NUM_THREE = 1500
+        const val NUM_HAPPY = 3560
+        const val NUM_STACK = 6720
+        const val NUM_STANDARD = 8120
+        const val NUM_TEAM = 11480
+        const val NUM_POND = 14080
         private const val PAY_COINS = 30
         private var DEFAULT_COINS = if (BuildConfig.DEBUG || BuildConfig.ProductDebug) {
-            1000
+            300
         } else {
             100
         }

@@ -52,16 +52,16 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file("../app/christmasprofile.jks")
-            storePassword "1q2w1q3e"
-            keyAlias "christmasprofile"
-            keyPassword "1q2w1q3e"
+            storeFile file("../app/likestag.jks")
+            storePassword "1q2w2w7u"
+            keyAlias "likestag"
+            keyPassword "1q2w2w7u"
         }
         debug {
-            storeFile file("../app/christmasprofile.jks")
-            storePassword "1q2w1q3e"
-            keyAlias "christmasprofile"
-            keyPassword "1q2w1q3e"
+            storeFile file("../app/likestag.jks")
+            storePassword "1q2w2w7u"
+            keyAlias "likestag"
+            keyPassword "1q2w2w7u"
         }
     }
     buildTypes {

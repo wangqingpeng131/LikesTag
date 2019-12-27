@@ -14,6 +14,7 @@ class LikeData {
                 R.drawable.popular_ic,
                 R.drawable.pet_ic
         )
+
         fun getHomeBean(): ArrayList<HomeBean> {
             val arrayList = ArrayList<HomeBean>()
             for (e in main_res) {
@@ -21,6 +22,18 @@ class LikeData {
                 arrayList.add(homeBean)
             }
             return arrayList
+        }
+
+        fun <T> getSearch(list: ArrayList<T>): ArrayList<SearchBean> {
+            var arrayList = ArrayList<SearchBean>()
+            for ((i, e) in list) {
+                val searchBean = SearchBean()
+                if (i < 3) {
+                    searchBean.res = R.drawable.hot_ic
+                }else {
+
+                }
+            }
         }
     }
 }

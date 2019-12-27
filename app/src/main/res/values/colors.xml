@@ -5,9 +5,6 @@
     <color name="colorAccent">#D81B60</color>
 
     <color name="action_bar_color">#FFF6F6F6</color>
-    <color name="pink">#FFFFABC1</color>
     <color name="color_store_item_bg">#fffff0f4</color>
-    <color name="earth_yellow">#ffffd372</color>
-    <color name="shadow">#FF1A1A1A</color>
-
+    <color name="pink">#FFB6A6D6</color>
 </resources>

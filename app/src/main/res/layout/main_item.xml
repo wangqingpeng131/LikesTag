@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/checkbox_group"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/main_iv"
-        android:layout_width="wrap_content"
+    <CheckBox
+        android:id="@+id/checkbox_it"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        tools:src="@drawable/fitness_ic" />
+        android:background="@null"
+        android:button="@null"
+        android:drawableStart="@drawable/hot_ic"
+        android:drawableEnd="@drawable/checkbox_ic"
+        android:drawablePadding="10dp"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:text="food"
+        android:textColor="#FF111111"
+        android:textSize="14sp" />
+
 </LinearLayout>
