@@ -13,17 +13,17 @@
         layout="@layout/main_bar"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#FFF4F4F4"
-        app:layout_constraintBottom_toTopOf="@id/main_radio_group" />
 
     <FrameLayout
         android:id="@+id/main_fl"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#FFF4F4F4" />
 
     <RadioGroup
         android:id="@+id/main_radio_group"

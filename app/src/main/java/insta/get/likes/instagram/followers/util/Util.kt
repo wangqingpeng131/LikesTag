@@ -6,9 +6,15 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.text.TextUtils
+import insta.get.likes.instagram.followers.BuildConfig
 import insta.get.likes.instagram.followers.ui.ShoppingActivity
 import java.io.*
 import java.text.DecimalFormat
+
+fun Int.toDp(): Int {
+    val scale = SaveFavorite.getContext().resources.displayMetrics.density
+    return (this * scale + 0.5f).toInt()
+}
 
 class Util {
     private var coins: Int = 0
@@ -46,15 +52,29 @@ class Util {
     companion object {
         const val GOLD = "gold"
         const val COIN = "coin"
-        const val MINI = "insta.get.likes.instagram.followers.small"
-        const val LARGE = "insta.get.likes.instagram.followers.middle"
-        const val SUPER = "insta.get.likes.instagram.followers.large"
-        const val IAP = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAs7iTa8QlkieKq8Qc4QrwhuP1K512IGjy+PkD7CdvtNe4DqEg61fdlF6Qp7Er+xDO55krI1Iwm3+HaoF/K15kScoFg2ll87ZUM+q+DKj+vC0bV+PUIJUJSHGeMMDto9GP1zS/z/IellbPXs/g73zEGD5pwbL8hqprveqU9bfAKZYMy+DCJBfyzp4r6yl+Jg9BEs/iQYJKlS9sXlGSIEq1Pkr2WywvWa8xsWVjZWISNxkp0KkJz34W2vl5nRoveuyqEq7NxEkdp02tfBJvB2bF9DHbNlpyXVAgeN0k0uZ1tLsMzHzpphW8sDGSXi/6ZfE3pzevGt9eQ9wZIInfBBH4sQIDAQAB"
-        const val NUM_ONE = 400
-        const val NUM_TWO = 900
-        const val NUM_THREE = 2000
-        const val DEFAULT_COINS = 150
-        private const val PAY_COINS = 50
+        const val MINI = "get.followers.instagram.hashtags.likes.person"
+        const val LARGE = "get.followers.instagram.hashtags.likes.partner"
+        const val SUPER = "get.followers.instagram.hashtags.likes.group"
+        const val HAPPY = "get.followers.instagram.hashtags.likes.happy"
+        const val STACK = "get.followers.instagram.hashtags.likes.stack"
+        const val STANDARD = "get.followers.instagram.hashtags.likes.standard"
+        const val TEAM = "get.followers.instagram.hashtags.likes.team"
+        const val POND = "get.followers.instagram.hashtags.likes.pond"
+        const val IAP = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAq2wlVxqZFz/GIz3I7Dg+mGTTg0G72hlaNzEuSG9pGDB9uVwXsZ4Ajr3hsZkXWOabUCi9v80/XfJzVfZCZWNeQRPP9nsDjibFrUKNHdLuSYrTWeKo+CTSk0G2QDbiSUQ03Lx0pXduRqrC7haE4u3r3mYEQ4ya1Dj0NaL9P1V2cNofTiKRZLpr+bh9N1AwvCMELLDw6L3HjgsIrwqFo5ulMQIjJD7HEWtVvuM8VfBHJpaPSebUdq36NIaIQiJr/EsHkZBbd7ZGtaAdoneX6uOllX9NtNpmdhIFe3JuSeg3YQIiPBTppWA2OuGZpS0gMKb5+OivSxx6tNZTE6BZGG9hLwIDAQAB"
+        const val NUM_ONE = 200
+        const val NUM_TWO = 500
+        const val NUM_THREE = 1000
+        const val NUM_HAPPY = 2000
+        const val NUM_STACK = 3000
+        const val NUM_STANDARD = 4500
+        const val NUM_TEAM = 6500
+        const val NUM_POND = 8500
+        private const val PAY_COINS = 30
+        private var DEFAULT_COINS = if (BuildConfig.DEBUG || BuildConfig.ProductDebug) {
+            1000
+        } else {
+            100
+        }
 
         fun convert(num: Int): String {
             val df = DecimalFormat()
@@ -73,14 +93,14 @@ class Util {
             }
         }
 
-        fun getCoins(context: Context): String {
-            val shared = context.getSharedPreferences(GOLD, Context.MODE_PRIVATE)
+        fun getCoins(): String {
+            val shared = SaveFavorite.getContext().getSharedPreferences(GOLD, Context.MODE_PRIVATE)
             val num = shared.getInt(COIN, DEFAULT_COINS)
             return convert(num)
         }
 
-        fun buyCoins(context: Context, coins: Int): String {
-            val shared = context.getSharedPreferences(GOLD, Context.MODE_PRIVATE)
+        fun buyCoins(coins: Int): String {
+            val shared = SaveFavorite.getContext().getSharedPreferences(GOLD, Context.MODE_PRIVATE)
             var num = shared.getInt(COIN, DEFAULT_COINS)
             val editor = shared.edit()
             num += coins

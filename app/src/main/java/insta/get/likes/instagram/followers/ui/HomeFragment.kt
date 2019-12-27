@@ -7,12 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import insta.get.likes.instagram.followers.adapter.RedeemItemDecoration
 import insta.get.likes.instagram.followers.R
 import insta.get.likes.instagram.followers.adapter.HomeAdapter
 import insta.get.likes.instagram.followers.callback.TemplateCallback
 import insta.get.likes.instagram.followers.data.LikeData
+import insta.get.likes.instagram.followers.util.toDp
 
 class HomeFragment : Fragment(), TemplateCallback {
 
@@ -26,7 +28,8 @@ class HomeFragment : Fragment(), TemplateCallback {
         val root = inflater.inflate(R.layout.fragment_home, container, false)
         val homeRv = root.findViewById<RecyclerView>(R.id.home_rv)
         val homeBeans = LikeData.getHomeBean()
-        homeRv.layoutManager = GridLayoutManager(mActivity, 2)
+        homeRv.addItemDecoration(RedeemItemDecoration(46.toDp(),25.toDp(),25.toDp()))
+        homeRv.layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
         homeRv.adapter = HomeAdapter(homeBeans, this)
         return root
     }

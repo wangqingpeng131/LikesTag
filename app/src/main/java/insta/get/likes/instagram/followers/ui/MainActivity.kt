@@ -1,12 +1,12 @@
 package insta.get.likes.instagram.followers.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.RadioGroup
 import androidx.fragment.app.Fragment
 import com.adjust.sdk.Adjust
 import com.adjust.sdk.AdjustEvent
-import insta.get.likes.instagram.followers.R
 import com.mopub.common.MoPub
 import com.mopub.common.SdkConfiguration
 import com.mopub.common.SdkInitializationListener
@@ -14,6 +14,7 @@ import com.mopub.common.logging.MoPubLog
 import com.mopub.mobileads.MoPubErrorCode
 import com.mopub.mobileads.MoPubInterstitial
 import insta.get.likes.instagram.followers.BuildConfig
+import insta.get.likes.instagram.followers.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.main_bar.*
 
@@ -71,7 +72,10 @@ class MainActivity : BaseActivity(), MoPubInterstitial.InterstitialAdListener, R
         Adjust.trackEvent(event)
         setMoPub()
         addFragments()
+        switchFragment(0)
         main_radio_group.setOnCheckedChangeListener(this)
+        main_set.setOnClickListener(this)
+        main_store.setOnClickListener(this)
     }
 
     override fun onResume() {
@@ -92,6 +96,13 @@ class MainActivity : BaseActivity(), MoPubInterstitial.InterstitialAdListener, R
     }
 
     override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.main_set -> {
+            }
+            R.id.main_store -> {
+                startActivity(Intent(this, ShoppingActivity::class.java))
+            }
+        }
     }
 
     private fun addFragments() {
@@ -101,20 +112,22 @@ class MainActivity : BaseActivity(), MoPubInterstitial.InterstitialAdListener, R
         fragments.add(FavoriteFragment())
     }
 
-    fun switchFragment(position: Int) {
+    private fun switchFragment(position: Int) {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         for ((i, e) in fragments.withIndex()) {
             if (i == position) {
                 if (e.isAdded) {
                     fragmentTransaction.show(e)
+                } else {
+                    fragmentTransaction.add(R.id.main_fl, e)
                 }
             } else {
                 if (e.isAdded) {
                     fragmentTransaction.hide(e)
                 }
             }
-            fragmentTransaction.commit()
         }
+        fragmentTransaction.commit()
     }
 
     override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {

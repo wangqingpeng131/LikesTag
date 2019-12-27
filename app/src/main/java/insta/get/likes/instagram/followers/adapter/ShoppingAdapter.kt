@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.util.Pair
 import insta.get.likes.instagram.followers.R
 import insta.get.likes.instagram.followers.ui.ShoppingActivity
@@ -21,7 +22,7 @@ class ShoppingAdapter<T> constructor(private var context: Context, dataList: Lis
         val pair: Pair<*, *> = t as Pair<*, *>
         val coins = holder.getView<TextView>(R.id.shop_coin_num)
         val gold = holder.getView<TextView>(R.id.shop_gold_num)
-        val shopItem = holder.getView<LinearLayout>(R.id.shop_item)
+        val shopItem = holder.getView<ConstraintLayout>(R.id.shop_item)
         coins?.text = context.getString(R.string.times, pair.first)
         gold?.text = pair.second.toString()
         val iapId = ArrayList<String>()

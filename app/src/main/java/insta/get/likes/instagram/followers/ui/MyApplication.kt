@@ -5,6 +5,7 @@ import com.adjust.sdk.Adjust
 import com.adjust.sdk.AdjustConfig
 import com.adjust.sdk.LogLevel
 import insta.get.likes.instagram.followers.BuildConfig
+import insta.get.likes.instagram.followers.util.SaveFavorite
 
 class MyApplication : MultiDexApplication() {
     override fun onCreate() {
@@ -24,5 +25,6 @@ class MyApplication : MultiDexApplication() {
         config.setLogLevel(logLevel)
         config.setSendInBackground(true)
         Adjust.onCreate(config)
+        SaveFavorite.setContext(this)
     }
 }

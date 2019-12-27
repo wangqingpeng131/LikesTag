@@ -7,4 +7,9 @@
     <string name="num_one">$ 1.99</string>
     <string name="num_two">$ 3.99</string>
     <string name="num_three">$ 5.99</string>
+    <string name="num_happy">$ 10.99</string>
+    <string name="num_stack">$ 15.99</string>
+    <string name="num_standard">$ 25.99</string>
+    <string name="num_team">$ 35.99</string>
+    <string name="num_pond">$ 45.99</string>
 </resources>
