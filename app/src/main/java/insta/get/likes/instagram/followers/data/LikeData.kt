@@ -1,6 +1,10 @@
 package insta.get.likes.instagram.followers.data
 
+//import com.google.gson.Gson
+import com.google.gson.Gson
+import com.raizlabs.android.dbflow.sql.language.SQLite
 import insta.get.likes.instagram.followers.R
+import insta.get.likes.instagram.followers.util.Util
 
 class LikeData {
     companion object {
@@ -14,6 +18,44 @@ class LikeData {
                 R.drawable.popular_ic,
                 R.drawable.pet_ic
         )
+        val main_txt = arrayListOf(
+                "Food",
+                "Coffee",
+                "Social",
+                "Family",
+                "Fitness",
+                "Books",
+                "Popular",
+                "Pet"
+        )
+
+        fun getEditBeans(): MutableList<EditBean> {
+            return SQLite.select().from(EditBean::class.java).queryList()
+        }
+
+        fun getFavorites(): MutableList<FavoriteBean> {
+            return SQLite.select().from(FavoriteBean::class.java).orderBy(FavoriteBean_Table.id, false).queryList()
+        }
+
+        fun getHomeTags(position: Int): ArrayList<HomeTagBean> {
+            val homeTagBeans = ArrayList<HomeTagBean>()
+
+            val list = SQLite.select()
+                    .from(FavoriteBean::class.java)
+                    .where(FavoriteBean_Table.position.eq(position)).queryList()
+            val defaultbeans = Gson().fromJson(Util.readTextFromSDcard(), DefaultTags::class.java)
+            for ((i, e) in defaultbeans.tclassification[position].tcontent.withIndex()) {
+                val homeBean = HomeTagBean()
+                homeBean.res = e.ttag
+                if (i < list.size) {
+                    if (list[i].index == i) {
+                        homeBean.isFavorite = true
+                    }
+                }
+                homeTagBeans.add(homeBean)
+            }
+            return homeTagBeans
+        }
 
         fun getHomeBean(): ArrayList<HomeBean> {
             val arrayList = ArrayList<HomeBean>()
@@ -24,16 +66,19 @@ class LikeData {
             return arrayList
         }
 
-        fun <T> getSearch(list: ArrayList<T>): ArrayList<SearchBean> {
+        fun getSearch(list: ArrayList<String>): ArrayList<SearchBean> {
             var arrayList = ArrayList<SearchBean>()
-            for ((i, e) in list) {
+            for ((i, e) in list.withIndex()) {
                 val searchBean = SearchBean()
                 if (i < 3) {
                     searchBean.res = R.drawable.hot_ic
-                }else {
-
+                } else {
+                    searchBean.res = R.drawable.search_label
                 }
+                searchBean.text = e
+                arrayList.add(searchBean)
             }
+            return arrayList
         }
     }
 }

@@ -4,6 +4,12 @@ import androidx.multidex.MultiDexApplication
 import com.adjust.sdk.Adjust
 import com.adjust.sdk.AdjustConfig
 import com.adjust.sdk.LogLevel
+import com.raizlabs.android.dbflow.config.FlowConfig
+import com.raizlabs.android.dbflow.config.FlowLog
+import com.raizlabs.android.dbflow.config.FlowManager
+/*import com.raizlabs.android.dbflow.config.FlowConfig
+import com.raizlabs.android.dbflow.config.FlowLog
+import com.raizlabs.android.dbflow.config.FlowManager*/
 import insta.get.likes.instagram.followers.BuildConfig
 import insta.get.likes.instagram.followers.util.SaveFavorite
 
@@ -26,5 +32,14 @@ class MyApplication : MultiDexApplication() {
         config.setSendInBackground(true)
         Adjust.onCreate(config)
         SaveFavorite.setContext(this)
+        try {
+            FlowManager.init(
+                    FlowConfig.Builder(applicationContext)
+                            .openDatabasesOnInit(true).build()
+            )
+            FlowLog.setMinimumLoggingLevel(FlowLog.Level.V)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 }

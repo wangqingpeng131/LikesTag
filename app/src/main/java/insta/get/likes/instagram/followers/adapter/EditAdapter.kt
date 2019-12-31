@@ -1,13 +1,13 @@
 package insta.get.likes.instagram.followers.adapter
 
 import android.view.View
-import android.widget.ImageView
+import android.widget.TextView
 import insta.get.likes.instagram.followers.R
 import insta.get.likes.instagram.followers.callback.TemplateCallback
-import insta.get.likes.instagram.followers.data.HomeBean
+import insta.get.likes.instagram.followers.data.EditBean
 
 
-class HomeAdapter<T> constructor(dataList: List<T>,
+class EditAdapter<T> constructor(dataList: List<T>,
                                  templateCallback: TemplateCallback) : BaseAdapter<T>(dataList),
         ListenerWithPosition.OnClickWithPositionListener<Any> {
 
@@ -17,14 +17,14 @@ class HomeAdapter<T> constructor(dataList: List<T>,
     }
 
     override fun convert(holder: VH, t: T, position: Int) {
-        val ta = t as HomeBean
-        val iv = holder.getView<ImageView>(R.id.default_iv)
-        iv?.setImageResource(ta.res)
-        holder.setOnClickListener(this, R.id.default_iv)
+        val ta = t as EditBean
+        val tx = holder.getView<TextView>(R.id.edit_txt)
+        tx?.text = ta.str
+        holder.setOnClickListener(this, R.id.delete_iv)
 
     }
 
     override fun getLayout(viewType: Int): Int {
-        return R.layout.default_item
+        return R.layout.edit_item
     }
 }

@@ -7,4 +7,5 @@
     <color name="action_bar_color">#FFF6F6F6</color>
     <color name="color_store_item_bg">#fffff0f4</color>
     <color name="pink">#FFB6A6D6</color>
+    <color name="di_bl_bg">#4d000000</color>
 </resources>

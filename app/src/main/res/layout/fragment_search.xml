@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/search_group"
+        android:layout_width="330dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/search_edit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/search_bg"
+            android:hint="Search something....."
+            android:inputType="text"
+            android:paddingStart="18dp"
+            android:textColor="@color/pink"
+            android:textColorHint="@null"
+            android:textCursorDrawable="@drawable/cursor_color" />
+
+        <ImageView
+            android:layout_width="76dp"
+            android:layout_height="48dp"
+            android:layout_gravity="end"
+            android:adjustViewBounds="true"
+            android:src="@drawable/search_tag_bg_ic" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="28dp"
+            android:src="@drawable/search_tag_ic" />
+    </FrameLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/search_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toBottomOf="@id/search_group" />
+
+    <ImageView
+        android:id="@+id/search_copy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:src="@drawable/search_tag_copy_bg_ic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/search_favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:src="@drawable/favorite_tag_copy_bg_ic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/search_txt_copy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:drawableEnd="@drawable/coin"
+        android:drawablePadding="4dp"
+        android:includeFontPadding="false"
+        android:text="Copy -20"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@id/search_copy"
+        app:layout_constraintStart_toStartOf="@id/search_copy"
+        app:layout_constraintTop_toTopOf="@id/search_copy" />
+
+    <TextView
+        android:id="@+id/search_txt_favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="23dp"
+        android:drawableEnd="@drawable/coin"
+        android:drawablePadding="4dp"
+        android:includeFontPadding="false"
+        android:text="Favorite -20"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@id/search_favorite"
+        app:layout_constraintStart_toStartOf="@id/search_favorite"
+        app:layout_constraintTop_toTopOf="@id/search_favorite" />
+</androidx.constraintlayout.widget.ConstraintLayout>

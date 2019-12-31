@@ -31,9 +31,9 @@ class SearchFragment : Fragment(), TemplateCallback {
         val searchRv= root.findViewById<RecyclerView>(R.id.search_rv)
         val searchEd = root.findViewById<EditText>(R.id.search_edit)
         searchEd.setHintTextColor(ContextCompat.getColor(mActivity as Context, R.color.pink))
-        val searchBeans = LikeData.getHomeBean()
+//        val searchBeans = LikeData.getSearch()
         searchRv.layoutManager = LinearLayoutManager(mActivity as Context)
-        searchRv.adapter = SearchAdapter(searchBeans, this)
+//        searchRv.adapter = SearchAdapter(searchBeans, this)
         return root
     }
 

@@ -18,7 +18,7 @@ import insta.get.likes.instagram.followers.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.main_bar.*
 
-class MainActivity : BaseActivity(), MoPubInterstitial.InterstitialAdListener, RadioGroup.OnCheckedChangeListener {
+class MainActivity : BaseActivity(), MoPubInterstitial.InterstitialAdListener, RadioGroup.OnCheckedChangeListener, View.OnClickListener {
     private lateinit var mInterstitial: MoPubInterstitial
     private var loadNum: Int = 0
     private val fragments = ArrayList<Fragment>()

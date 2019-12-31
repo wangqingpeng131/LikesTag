@@ -32,7 +32,7 @@ import insta.get.likes.instagram.followers.util.Util.Companion.getCoins
 import kotlinx.android.synthetic.main.activity_shop.*
 import kotlinx.android.synthetic.main.title_bar.*
 
-class ShoppingActivity : BaseActivity(), GooglePay.Callback {
+class ShoppingActivity : BaseActivity(), GooglePay.Callback, View.OnClickListener {
     private lateinit var shopRv: RecyclerView
     private var templateData = ArrayList<Pair<Int, String>>()
     lateinit var googlePay: GooglePay

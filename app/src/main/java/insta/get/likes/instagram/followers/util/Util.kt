@@ -1,15 +1,20 @@
 package insta.get.likes.instagram.followers.util
 
 import android.app.AlertDialog
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.text.TextUtils
+import android.widget.Toast
 import insta.get.likes.instagram.followers.BuildConfig
+import insta.get.likes.instagram.followers.ui.DefaultTagsActivity
 import insta.get.likes.instagram.followers.ui.ShoppingActivity
 import java.io.*
 import java.text.DecimalFormat
+
 
 fun Int.toDp(): Int {
     val scale = SaveFavorite.getContext().resources.displayMetrics.density
@@ -18,6 +23,12 @@ fun Int.toDp(): Int {
 
 class Util {
     private var coins: Int = 0
+    fun copy(context: Context, text: String) {
+        val mClipboardManager = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val mClipData = ClipData.newPlainText("Label", text)
+        mClipboardManager.primaryClip = mClipData
+        Toast.makeText(context, "Success", Toast.LENGTH_LONG).show()
+    }
 
     fun payCoin(context: Context, payCoin: PayCoin, id: Int, position: Int) {
         val sp = context.getSharedPreferences(GOLD, Context.MODE_PRIVATE)
@@ -157,6 +168,29 @@ class Util {
         /*private fun getRealPathFromUriBelowAPI19(context: Context, uri: Uri): String? {
             return getDataColumn(context, uri, null, null)
         }*/
+
+        fun readTextFromSDcard(): String? {
+            val inputStreamReader: InputStreamReader
+            var resultString: String? = null
+            try {
+                inputStreamReader = InputStreamReader(SaveFavorite.getContext().assets.open("tag.json"), "UTF-8")
+                val bufferedReader = BufferedReader(
+                        inputStreamReader)
+                var line: String?
+                val stringBuilder = StringBuilder()
+                while (bufferedReader.readLine().also { line = it } != null) {
+                    stringBuilder.append(line)
+                }
+                inputStreamReader.close()
+                bufferedReader.close()
+                resultString = stringBuilder.toString()
+            } catch (e: UnsupportedEncodingException) {
+                e.printStackTrace()
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+            return resultString
+        }
 
         internal fun getFileProviderName(context: Context): String {
             return context.packageName + ".fileprovider"

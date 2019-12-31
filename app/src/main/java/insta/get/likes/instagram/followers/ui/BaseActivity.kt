@@ -8,7 +8,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 
-abstract class BaseActivity : AppCompatActivity(), View.OnClickListener {
+abstract class BaseActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
