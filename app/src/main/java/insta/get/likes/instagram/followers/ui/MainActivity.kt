@@ -47,13 +47,13 @@ class MainActivity : BaseActivity(), MoPubInterstitial.InterstitialAdListener, R
 
     private fun initSdkListener(): SdkInitializationListener {
         return SdkInitializationListener {
-            mInterstitial = MoPubInterstitial(this, "24534e1901884e398f1253216226017e")
+            mInterstitial = MoPubInterstitial(this, "fe628e6670f549b2abec929a62906cb8")
             mInterstitial.interstitialAdListener = this
         }
     }
 
     private fun setMoPub() {
-        val configBuilder = SdkConfiguration.Builder("24534e1901884e398f1253216226017e")
+        val configBuilder = SdkConfiguration.Builder("fe628e6670f549b2abec929a62906cb8")
         if (BuildConfig.DEBUG) {
             configBuilder.withLogLevel(MoPubLog.LogLevel.DEBUG)
         } else {
@@ -68,7 +68,7 @@ class MainActivity : BaseActivity(), MoPubInterstitial.InterstitialAdListener, R
         setContentView(R.layout.activity_main)
         android.R.color.white.setStatusBarColors()
         main_title.text = "LIKE TAG"
-        val event = AdjustEvent("vhme61")
+        val event = AdjustEvent("wnh15y")
         Adjust.trackEvent(event)
         setMoPub()
         addFragments()
@@ -98,6 +98,7 @@ class MainActivity : BaseActivity(), MoPubInterstitial.InterstitialAdListener, R
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.main_set -> {
+                startActivity(Intent(this,MSetActivity::class.java))
             }
             R.id.main_store -> {
                 startActivity(Intent(this, ShoppingActivity::class.java))

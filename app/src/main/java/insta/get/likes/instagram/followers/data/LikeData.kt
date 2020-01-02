@@ -70,11 +70,7 @@ class LikeData {
             var arrayList = ArrayList<SearchBean>()
             for ((i, e) in list.withIndex()) {
                 val searchBean = SearchBean()
-                if (i < 3) {
-                    searchBean.res = R.drawable.hot_ic
-                } else {
-                    searchBean.res = R.drawable.search_label
-                }
+
                 searchBean.text = e
                 arrayList.add(searchBean)
             }

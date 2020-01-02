@@ -10,7 +10,6 @@ import android.net.Uri
 import android.text.TextUtils
 import android.widget.Toast
 import insta.get.likes.instagram.followers.BuildConfig
-import insta.get.likes.instagram.followers.ui.DefaultTagsActivity
 import insta.get.likes.instagram.followers.ui.ShoppingActivity
 import java.io.*
 import java.text.DecimalFormat
@@ -33,9 +32,17 @@ class Util {
     fun payCoin(context: Context, payCoin: PayCoin, id: Int, position: Int) {
         val sp = context.getSharedPreferences(GOLD, Context.MODE_PRIVATE)
         coins = sp.getInt(COIN, DEFAULT_COINS)
-        if (coins < PAY_COINS) {
+        lateinit  var str :String
+        val defaultCoins: Int = if (position == 0) {
+            str = "Copy the tag spend $COPY_COINS coins."
+            COPY_COINS
+        } else {
+            str = "… will cost $FAVORITE_COINS coins, please confirm to continue."
+            FAVORITE_COINS
+        }
+        if (coins < defaultCoins) {
             val diaLog = AlertDialog.Builder(context)
-            diaLog.setMessage("Not enough coins, would you like to get more?")
+            diaLog.setMessage("Looks like your coins not enough, would you like to buy more?")
             diaLog.setPositiveButton("OK"
             ) { _, _ -> context.startActivity(Intent(context, ShoppingActivity::class.java)) }
             diaLog.setNegativeButton("Cancel"
@@ -43,10 +50,10 @@ class Util {
             diaLog.show()
         } else {
             AlertDialog.Builder(context)
-                    .setTitle("This item will cost $PAY_COINS coins.")
+                    .setTitle(str)
                     .setPositiveButton("OK"
                     ) { dialog, _ ->
-                        coins -= PAY_COINS
+                        coins -= defaultCoins
                         payCoin.payCoinsCallback(id, position)
                         sp.edit().putInt(COIN, coins).apply()
                         dialog.dismiss()
@@ -80,7 +87,8 @@ class Util {
         const val NUM_STANDARD = 8120
         const val NUM_TEAM = 11480
         const val NUM_POND = 14080
-        private const val PAY_COINS = 30
+        private const val COPY_COINS = 30
+        private const val FAVORITE_COINS = 20
         private var DEFAULT_COINS = if (BuildConfig.DEBUG || BuildConfig.ProductDebug) {
             300
         } else {

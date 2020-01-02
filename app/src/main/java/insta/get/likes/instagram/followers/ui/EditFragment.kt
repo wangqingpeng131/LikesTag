@@ -6,19 +6,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import com.library.flowlayout.FlowLayoutManager
 import com.library.flowlayout.SpaceItemDecoration
 import com.raizlabs.android.dbflow.kotlinextensions.delete
 import com.raizlabs.android.dbflow.kotlinextensions.save
+import com.raizlabs.android.dbflow.sql.language.SQLite
 import insta.get.likes.instagram.followers.R
 import insta.get.likes.instagram.followers.adapter.EditAdapter
 import insta.get.likes.instagram.followers.callback.TemplateCallback
-import insta.get.likes.instagram.followers.data.EditBean
-import insta.get.likes.instagram.followers.data.LikeData
+import insta.get.likes.instagram.followers.data.*
 import insta.get.likes.instagram.followers.util.Util
 import insta.get.likes.instagram.followers.util.toDp
 import java.lang.StringBuilder
@@ -29,6 +32,8 @@ class EditFragment : Fragment(), TemplateCallback, View.OnClickListener, Util.Pa
     private lateinit var editbeans: MutableList<EditBean>
     private lateinit var editRv: RecyclerView
     private lateinit var editPlay: ConstraintLayout
+    private lateinit var editCopy: ImageView
+    private lateinit var editFavorite:ImageView
     private var mActivity: Activity? = null
     private val util = Util()
     private var currentContent: String? = null
@@ -42,7 +47,11 @@ class EditFragment : Fragment(), TemplateCallback, View.OnClickListener, Util.Pa
         addTags = root.findViewById(R.id.add_tag_group)
         editRv = root.findViewById(R.id.edit_rv)
         editPlay = root.findViewById(R.id.edit_pay)
+        editCopy = root.findViewById(R.id.edit_copy)
+        editFavorite = root.findViewById(R.id.edit_favorite)
         addTags.setOnClickListener(this)
+        editCopy.setOnClickListener(this)
+        editFavorite.setOnClickListener(this)
         editbeans = LikeData.getEditBeans()
         if (editbeans.isEmpty()) {
             editPlay.visibility = View.GONE
@@ -94,14 +103,20 @@ class EditFragment : Fragment(), TemplateCallback, View.OnClickListener, Util.Pa
                 fullScreenDialogFragment.show((context as AppCompatActivity).supportFragmentManager, "d")
             }
             R.id.edit_copy -> {
-                util.payCoin(mActivity as Context, this, 0, 0)
                 val stringBuilder = StringBuilder()
                 for (e in editbeans) {
-                    stringBuilder.append(e.str)
+                    stringBuilder.append("${e.str} ")
                 }
                 currentContent = stringBuilder.toString()
+                util.payCoin(mActivity as Context, this, 0, 0)
             }
             R.id.edit_favorite -> {
+                val stringBuilder = StringBuilder()
+                for (e in editbeans) {
+                    stringBuilder.append("${e.str} ")
+                }
+                currentContent = stringBuilder.toString()
+                util.payCoin(mActivity as Context, this, 1, 1)
             }
         }
     }
@@ -109,6 +124,18 @@ class EditFragment : Fragment(), TemplateCallback, View.OnClickListener, Util.Pa
         when (id) {
             0 -> {
                 util.copy(mActivity as Context, currentContent!!)
+            }
+            1-> {
+                val list = SQLite.select()
+                        .from(FavoriteBean::class.java)
+                        .where(FavoriteBean_Table.str.eq(currentContent)).queryList()
+                if (list.isEmpty()) {
+                    val favoriteBean = FavoriteBean(position = -1,index = -1,str = currentContent!!)
+                    favoriteBean.save()
+                    Toast.makeText(mActivity, "Success", Toast.LENGTH_SHORT).show()
+                }else {
+                    Toast.makeText(mActivity, "has exist", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }

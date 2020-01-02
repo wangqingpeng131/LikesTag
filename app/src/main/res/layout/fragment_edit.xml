@@ -90,7 +90,7 @@
             android:drawableEnd="@drawable/coin"
             android:drawablePadding="4dp"
             android:includeFontPadding="false"
-            android:text="Copy -20"
+            android:text="Copy -30"
             android:textColor="@android:color/white"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@id/edit_copy"

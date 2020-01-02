@@ -50,12 +50,8 @@ class DefaultTagsActivity : BaseActivity(), TemplateCallback, View.OnClickListen
                             index = position, str = homeBeans[position].res)
                     favoriteBean.save()
                 } else {
-/*
                     Delete.table(FavoriteBean::class.java,
-                            FavoriteBean_Table.index.eq(position),
-                            FavoriteBean_Table.position.eq(this.position))
-*/
-                    homeBeans[position].delete()
+                            FavoriteBean_Table.str.eq(homeBeans[position].res))
                 }
             }
         }

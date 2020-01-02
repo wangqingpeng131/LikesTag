@@ -38,12 +38,11 @@
         <activity
             android:name="insta.get.likes.instagram.followers.ui.MainActivity"
             android:configChanges="layoutDirection|orientation|screenSize|screenLayout|fontScale|density"
-            android:windowSoftInputMode="adjustNothing"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustNothing">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -55,7 +54,13 @@
             android:name=".ui.DefaultTagsActivity"
             android:configChanges="layoutDirection|orientation|screenSize|screenLayout|fontScale|density"
             android:screenOrientation="portrait" />
-
+        <activity
+            android:name=".ui.MFActivity"
+            android:configChanges="layoutDirection|orientation|screenSize|screenLayout|fontScale|density"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.MSetActivity"
+            android:configChanges="layoutDirection|orientation|screenSize|screenLayout|fontScale|density"
+            android:screenOrientation="portrait" />
     </application>
-
 </manifest>

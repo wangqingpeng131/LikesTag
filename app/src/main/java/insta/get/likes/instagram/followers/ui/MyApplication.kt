@@ -26,7 +26,7 @@ class MyApplication : MultiDexApplication() {
             environment = AdjustConfig.ENVIRONMENT_PRODUCTION
             logLevel = LogLevel.SUPRESS
         }
-        val token = "9h0uf1g374zk"
+        val token = "bemzuddblyps"
         val config = AdjustConfig(this, token, environment)
         config.setLogLevel(logLevel)
         config.setSendInBackground(true)
